@@ -30,13 +30,6 @@ public class NotificationSystemPage extends BasicPage {
 		return this.getMessage().getText();
 	}
 	
-	public void waitMessToVanish () {
-		
-		//WebElement obavestenje =
-		String obavestenje = driver.findElement(By.xpath("//*[contains(@class, 'system_message')]")).getAttribute("style");
-		
-		
-	}
 	
 	public void waiting () {
 		waiter.until(ExpectedConditions.invisibilityOfElementWithText(By.xpath("//*[contains(@class, 'system_message')]"), "display: none;"));	

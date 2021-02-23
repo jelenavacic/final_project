@@ -38,11 +38,13 @@ public class LocationPopupPage extends BasicPage {
 		}
 	
 //	get metoda za element koji prikazuje lokaciju u hederu 
+	//*[@id="header"]/div[1]/div/div/div[1]/div/a
 	public WebElement getLocationInHeader () {
 		return driver.findElement(By.xpath("//*[@id=\"header\"]/div[1]/div/div/div[1]/div/a/i"));
 	}
 	
 //	get metodu za close element
+	//*[@id="location-popup"]/div/div/div/div/a
 	public WebElement getCloseElement () {
 		return driver.findElement(By.xpath("//*[@id=\"location-popup\"]/div/div/div/div/a"));
 	}
@@ -57,12 +59,13 @@ public class LocationPopupPage extends BasicPage {
 //	getSubmit()
 //	//*[@name='btn_submit']
 	
+	
 	public WebElement getKeyword () {
 		return driver.findElement(By.id("locality_keyword"));	
 	}
 	
 	public WebElement getLocationItem (String locationName) {
-		return driver.findElement(By.xpath("//li/a[contains(text(), '" + locationName + "')]/"));
+		return driver.findElement(By.xpath("//li/a[contains(text(), '" + locationName + "')]/.."));
 	}
 	
 		
@@ -88,7 +91,7 @@ public class LocationPopupPage extends BasicPage {
 //	prvi argument skripte je location input
 //	drugi argument skripte je vrednost pročitanog atributa iz drugog koraka.
 //	Klikće na submit element preko skripte arguments[0].click();
-//	metodu koja zatvara iskačući dijalog, klikom na X dugme
+
 	
 	public void setLocation (String locationName) {
 		this.getKeyword().click();
@@ -97,6 +100,7 @@ public class LocationPopupPage extends BasicPage {
 		js.executeScript("arguments[0].click();", this.getSubmit());
 	}
 	
+//	metodu koja zatvara iskačući dijalog, klikom na X dugme
 	public void closePopup () {
 		this.getCloseElement().click();
 	}
