@@ -16,8 +16,11 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
+import pages.AuthPage;
+import pages.CartSummaryPage;
 import pages.LocationPopupPage;
 import pages.LoginPage;
+import pages.MealPage;
 import pages.NotificationSystemPage;
 import pages.ProfilePage;
 
@@ -46,6 +49,9 @@ public abstract class BasicTest {
 	protected ProfilePage pp;
 	protected LoginPage lp;
 	protected NotificationSystemPage nsp;
+	protected AuthPage ap;
+	protected MealPage mp;
+	protected CartSummaryPage csp;
 	protected String baseUrl;
 	protected String email;
 	protected String password;
@@ -69,6 +75,9 @@ public abstract class BasicTest {
 		this.pp = new ProfilePage(driver, waiter, js);
 		this.lp = new LoginPage(driver, waiter, js);
 		this.nsp = new NotificationSystemPage(driver, waiter, js);
+		this.ap = new AuthPage(driver, waiter, js);
+		this.mp = new MealPage(driver, waiter, js);
+		this.csp = new CartSummaryPage(driver, waiter, js);
 		this.baseUrl = "http://demo.yo-meals.com/";
 		this.email = "customer@dummyid.com";
 		this.password = "12345678a";
@@ -93,7 +102,7 @@ public abstract class BasicTest {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File source = ts.getScreenshotAs(OutputType.FILE); //takes screenshot and keeps it in memory
 		
-		FileHandler.copy(source, new File ("./screenshots/2021-23-2-20-20-01.png"));
+		FileHandler.copy(source, new File ("./screenshots/2021-24-2-11-36-01.png"));
 		
 		driver.manage().deleteAllCookies();
 		

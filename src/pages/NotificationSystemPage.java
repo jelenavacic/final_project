@@ -1,5 +1,7 @@
 package pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -21,18 +23,24 @@ public class NotificationSystemPage extends BasicPage {
 //		čeka se da element //*[contains(@class, 'system_message')]
 //		za atribut style dobije vrednost  "display: none;"
 
-	public WebElement getMessage() {
-		return driver.findElement(By.xpath(
+
+	public List<WebElement> getMessage() {
+		return driver.findElements(By.xpath(
 				"//*[contains(@class, 'alert--success') or contains(@class, 'alert--danger')][contains(@style,'display: block')]"));
 	}
 
+
 	public String messageText() {
-		return this.getMessage().getText();
+		for (int i = 0; i < this.getMessage().size(); i++) {
+			return this.getMessage().get(i).getText();
+		}
+		return null;
 	}
 	
 	
 	public void waiting () {
-		waiter.until(ExpectedConditions.invisibilityOfElementWithText(By.xpath("//*[contains(@class, 'system_message')]"), "display: none;"));	
+		waiter.until(ExpectedConditions.attributeToBe(By.xpath("//*[contains(@class, 'system_message')]"), "style", "display: none;"));	
+
 	}
 
 }

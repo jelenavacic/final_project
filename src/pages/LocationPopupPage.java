@@ -38,26 +38,14 @@ public class LocationPopupPage extends BasicPage {
 		}
 	
 //	get metoda za element koji prikazuje lokaciju u hederu 
-	//*[@id="header"]/div[1]/div/div/div[1]/div/a
 	public WebElement getLocationInHeader () {
 		return driver.findElement(By.xpath("//*[@id=\"header\"]/div[1]/div/div/div[1]/div/a/i"));
 	}
 	
 //	get metodu za close element
-	//*[@id="location-popup"]/div/div/div/div/a
 	public WebElement getCloseElement () {
 		return driver.findElement(By.xpath("//*[@id=\"location-popup\"]/div/div/div/div/a"));
 	}
-	
-//	get metode potrebne za implementaciju metode u kojoj se postavlja lokacija
-//	getKeyword()
-//	//*[@id='locality_keyword']
-//	getLocationItem(String locationName)
-//	//li/a[contains(text(), '" + locationName + "')]/..
-//	getLocationInput()
-//	//*[@id='location_id']
-//	getSubmit()
-//	//*[@name='btn_submit']
 	
 	
 	public WebElement getKeyword () {
@@ -93,11 +81,15 @@ public class LocationPopupPage extends BasicPage {
 //	Klikće na submit element preko skripte arguments[0].click();
 
 	
-	public void setLocation (String locationName) {
+	public void setLocation (String locationName) throws InterruptedException {
+		this.getLocationInHeader().click();
 		this.getKeyword().click();
-		String location = this.getLocationItem(locationName).getAttribute(locationName);
+		String location = this.getLocationItem(locationName).getAttribute("data-value");
+		Thread.sleep(2000);
 		js.executeScript("arguments[0].value=arguments[1];", this.getLocationInput(), location);
+		Thread.sleep(2000);
 		js.executeScript("arguments[0].click();", this.getSubmit());
+		Thread.sleep(2000);
 	}
 	
 //	metodu koja zatvara iskačući dijalog, klikom na X dugme

@@ -41,7 +41,6 @@ public class LoginPage extends BasicPage {
 	}
 	
 	public String getMessage () {
-		//html/body/div[2]
 		return driver.findElement(By.xpath("/html/body/div[2]")).getText();
 	}
 	

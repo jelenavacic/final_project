@@ -65,7 +65,6 @@ public class ProfilePage extends BasicPage {
 	}
 
 	public WebElement getFirstSaveBtn() {
-		//// *[@id="profileInfoFrm"]/div[5]/div/fieldset/input
 		return driver.findElement(By.xpath("//*[@id=\"profileInfoFrm\"]/div[5]/div/fieldset/input"));
 	}
 
@@ -113,23 +112,6 @@ public class ProfilePage extends BasicPage {
 		waiter.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("/html/body/div[2]")));
 	}
 
-	public WebElement getUserBtn() {
-		//// li[@class="filled "]/a'
-		//// *[@id=\"header\"]/div[2]/div/div[2]/div[2]/ul/li/a
-		// *[@id="header"]/div[2]/div/div[2]/div[2]/ul/li/a
-		return driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div/div[2]/div[2]/ul/li/a"));
-	}
-
-	public WebElement getLogoutBtn() {
-		// *[@id=\"header\"]/div[2]/div/div[2]/div[2]/ul/li/div/ul/li[2]/a
-		return driver.findElement(By.xpath("//div[@class=\"my-account-dropdown\"]/ul/li[2]/a"));
-	}
-
-	public void logout() throws InterruptedException {
-		this.getUserBtn().click();
-		this.getLogoutBtn().click();
-		Thread.sleep(2000);
-	}
 
 //	metodu koja menja sve osnovne informacije korisnika - kao parametri se prosleđuju sve potrebne informacije
 

@@ -40,11 +40,12 @@ public class ProfileTest extends BasicTest {
 		
 		sa.assertTrue(setup, "[ERROR] Setup failed!");
 		
-		pp.logout();
+		ap.logout();
 		boolean logout = pp.getMessage().contains("Logout Successfull!");
 		sa.assertTrue(logout, "[ERROR] Logout failed!");
 		
 		sa.assertAll();
+		
 		
 	}
 
@@ -75,7 +76,7 @@ public class ProfileTest extends BasicTest {
 		driver.navigate().to(baseUrl + "guest-user/login-form");
 		SoftAssert sa = new SoftAssert ();
 		
-		lpp.closePopup();
+		//lpp.closePopup();
 		lp.login(this.email, this.password);
 		
 		boolean login = lp.getMessage().contains("Login Successfull");
@@ -88,18 +89,14 @@ public class ProfileTest extends BasicTest {
 		boolean profilePicUpload = pp.getMessage().contains("Profile Image Uploaded Successfully");
 		sa.assertTrue(profilePicUpload, "[ERROR] Profile picture upload failed!");
 		
-//		sačekajte da nestane obaveštenje
-		//waiter.until(ExpectedConditions.invisibilityOf());
-		pp.waiting();
+		nsp.waiting();
 		
 		pp.removePicture();
 		boolean removeProfilePic = pp.getMessage().contains("Profile Image Deleted Successfully");
 		sa.assertTrue(removeProfilePic, "[ERROR] Profile picture deletion failed!");
-		pp.waiting();
+		nsp.waiting();
 		
-		//waiter.until(arg0)
-		
-		pp.logout();
+		ap.logout();
 		boolean logout = pp.getMessage().contains("Logout Successfull!");
 		sa.assertTrue(logout, "[ERROR] Logout failed!");
 		
