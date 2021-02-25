@@ -23,6 +23,7 @@ import pages.LoginPage;
 import pages.MealPage;
 import pages.NotificationSystemPage;
 import pages.ProfilePage;
+import pages.SearchResultPage;
 
 public abstract class BasicTest {
 	
@@ -52,6 +53,7 @@ public abstract class BasicTest {
 	protected AuthPage ap;
 	protected MealPage mp;
 	protected CartSummaryPage csp;
+	protected SearchResultPage srp;
 	protected String baseUrl;
 	protected String email;
 	protected String password;
@@ -78,6 +80,7 @@ public abstract class BasicTest {
 		this.ap = new AuthPage(driver, waiter, js);
 		this.mp = new MealPage(driver, waiter, js);
 		this.csp = new CartSummaryPage(driver, waiter, js);
+		this.srp = new SearchResultPage(driver, waiter, js);
 		this.baseUrl = "http://demo.yo-meals.com/";
 		this.email = "customer@dummyid.com";
 		this.password = "12345678a";
