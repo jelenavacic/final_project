@@ -57,12 +57,13 @@ public class SearchTest extends BasicTest {
 			
 			sa.assertEquals(srp.numberOfResults(), noOfResults, "[ERROR] Number of results is not the same!");
 			
-//			for (int j = 3; j < row.getLastCellNum(); j++) {
-//				String meal = row.getCell(j).getStringCellValue();
-//				sa.assertTrue(srp.mealName().contains(meal), "[ERROR] Meal is not in the list!");
-//				
-//			}
 			
+			for (int j = 3; j < srp.mealName().size() + 3 ; j++) {
+				
+				String name = row.getCell(j).getStringCellValue();
+				boolean nameOfTheMeal = srp.mealName().get(j-3).contains(name);
+				sa.assertTrue(nameOfTheMeal, "[ERROR] The meal is not listed!");		
+			}
 		}
 		sa.assertAll();
 		fis.close();

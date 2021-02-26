@@ -1,5 +1,6 @@
 package pages;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -23,12 +24,13 @@ public class SearchResultPage extends BasicPage {
 		return driver.findElements(By.xpath("//*[@class='product-name']/a"));
 	}
 	
-	public List<String> mealName () {
+	public ArrayList<String> mealName () {
+		ArrayList<String> names = new ArrayList <String>();
 		for (int i = 0; i < this.allSearchResults().size(); i++) {
 			String meal = this.allSearchResults().get(i).getText();
-			this.mealName().add(meal);
+			names.add(meal);
 			}
-		return null;
+		return names;
 	}
 	
 	public int numberOfResults () {

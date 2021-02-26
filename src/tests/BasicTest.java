@@ -2,6 +2,9 @@ package tests;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -102,10 +105,12 @@ public abstract class BasicTest {
 	
 	public void takeScreenShotOnFailure(ITestResult testResult) throws IOException {
 		if (testResult.getStatus() == ITestResult.FAILURE) { 
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh-mm-ss");
+		Date date = new Date ();
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File source = ts.getScreenshotAs(OutputType.FILE); //takes screenshot and keeps it in memory
 		
-		FileHandler.copy(source, new File ("./screenshots/2021-24-2-11-36-01.png"));
+		FileHandler.copy(source, new File ("./screenshots/" + dateFormat.format (date) + "png"));
 		
 		driver.manage().deleteAllCookies();
 		
